@@ -6,7 +6,7 @@ describe '投稿のテスト' do
   let!(:list) {create(:list,title:'hoge',body:'body')}
   describe 'トップ画面(root_path)のテスト' do
     before do
-      visit root_path
+      visit top_path
     end
     context '表示の確認' do
       it 'トップ画面(top_path)に「ここはTopページです」が表示されているか' do
@@ -22,7 +22,7 @@ describe '投稿のテスト' do
     before do
       visit new_list_path
       end
-    content '表示の確認' do
+    context '表示の確認' do
       it 'new_list_pathが"/lists/new"であるか' do
         expect(current_path).to eq('/lists/new')
       end
@@ -80,7 +80,7 @@ describe '投稿のテスト' do
   
   describe '編集画面のテスト' do
     before do
-      visit edit_list_path
+      visit edit_list_path(list)
     end
     context '表示の確認' do
       it '編集前のタイトルと本文がフォームに表示されている' do
